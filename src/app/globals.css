@@ -1,0 +1,285 @@
+@import "tailwindcss";
+
+/* ── Map CSS variables to Tailwind theme tokens ── */
+/* Usage: bg-card, text-t-primary, border-t-border, etc. */
+@theme {
+  /* Brand */
+  --color-brand: var(--color-primary);
+  --color-accent: #0D939D;
+  --color-accent-hover: #0A7A83;
+
+  /* Backgrounds */
+  --color-page: var(--color-bg);
+  --color-card: var(--color-card-bg);
+  --color-card-alt: var(--color-card-alt);
+  --color-header: var(--color-header-bg);
+  --color-sidebar: var(--color-sidebar-bg);
+  --color-modal: var(--color-modal-bg);
+  --color-dropdown: var(--color-dropdown-bg);
+  --color-input: var(--color-input-bg);
+  --color-table-head: var(--color-table-header);
+
+  /* Text */
+  --color-t-primary: var(--color-text-primary);
+  --color-t-secondary: var(--color-text-secondary);
+  --color-t-body: var(--color-text-body);
+  --color-t-light: var(--color-text-light);
+  --color-t-lighter: var(--color-text-lighter);
+  --color-t-muted: var(--color-text-muted);
+
+  /* Borders */
+  --color-t-border: var(--color-border);
+  --color-header-line: var(--color-header-border);
+  --color-sidebar-line: var(--color-sidebar-border);
+  --color-table-line: var(--color-table-border);
+  --color-input-line: var(--color-input-border);
+
+  /* Status colors */
+  --color-t-success: var(--color-success);
+  --color-t-warning: var(--color-warning);
+  --color-t-error: var(--color-error);
+
+  /* Status backgrounds */
+  --color-success-bg: #C6F6D5;
+  --color-success-text: #276749;
+  --color-error-bg: #FED7D7;
+  --color-error-text: #9B2C2C;
+  --color-error-border: #FEB2B2;
+  --color-warning-bg: #FEEBC8;
+  --color-warning-text: #9C4221;
+  --color-info-bg: #EBF8FF;
+  --color-info-text: #2C5282;
+  --color-danger: #E74C3C;
+  --color-danger-hover: #C0392B;
+  --color-danger-light: #FC8181;
+
+  /* Line chip colors (WorkList) */
+  --color-chip-blue-bg: #EBF8FF;
+  --color-chip-blue-text: #2B6CB0;
+  --color-chip-green-bg: #F0FFF4;
+  --color-chip-green-text: #276749;
+  --color-chip-red-bg: #FFF5F5;
+  --color-chip-red-text: #9B2C2C;
+  --color-chip-yellow-bg: #FFFFF0;
+  --color-chip-yellow-text: #7B6F00;
+
+  /* Dashboard stat colors */
+  --color-stat-green: #38A169;
+  --color-stat-orange: #DD6B20;
+
+  /* Badge */
+  --color-info-badge-bg: #BEE3F8;
+  --color-default-badge-bg: #EDF2F7;
+  --color-default-badge-text: #718096;
+
+  /* Button */
+  --color-secondary-btn: #F5A623;
+  --color-secondary-btn-hover: #F7B84A;
+  --color-success-hover: rgba(154, 230, 180, 0.5);
+
+  /* Input (legacy) */
+  --color-input-label: #374151;
+  --color-input-icon: #9CA3AF;
+  --color-input-text: #111827;
+  --color-input-border-legacy: #D1D5DB;
+  --color-input-disabled-bg: #F9FAFB;
+
+  /* Login */
+  --color-login-bg: #C8E8F5;
+
+  /* Focus ring */
+  --color-focus-ring: #0D939D;
+  --color-focus-error: #E74C3C;
+
+  /* Font sizes — Tailwind v4 uses --text-* for text-{name} utility */
+  --text-2xs: 9px;
+  --text-2xs--line-height: 1.2;
+  --text-xs2: 11px;
+  --text-xs2--line-height: 1.3;
+  --text-xs: 11.5px;
+  --text-xs--line-height: 1.3;
+  --text-sm2: 12.5px;
+  --text-sm2--line-height: 1.4;
+  --text-sm: 13px;
+  --text-sm--line-height: 1.4;
+  --text-md: 15px;
+  --text-md--line-height: 1.4;
+  --text-lg: 17px;
+  --text-lg--line-height: 1.3;
+  --text-xl: 22px;
+  --text-xl--line-height: 1.2;
+
+  /* Icon sizes */
+  --spacing-icon-sm: 13px;
+  --spacing-icon-md: 16px;
+  --spacing-icon-lg: 18px;
+
+  /* Spacing / Sizing */
+  --spacing-input-h: 34px;
+  --spacing-btn-px: 18px;
+  --spacing-cell-py: 11px;
+  --spacing-cell-py-sm: 7px;
+  --spacing-sidebar: 240px;
+
+  /* Radius */
+  --radius-input: 5px;
+  --radius-card: 10px;
+}
+
+/* ── Sidebar – must be outside @layer so it wins over Tailwind preflight ── */
+.iq-sidebar {
+  width: 200px !important;
+  min-width: 200px !important;
+  height: 100% !important;
+  background-color: #1B3A6B !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  flex-shrink: 0 !important;
+}
+.iq-sidebar * { box-sizing: border-box; }
+.iq-sidebar-logo {
+  padding: 13px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  flex-shrink: 0;
+}
+.iq-sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px 0;
+}
+.iq-sidebar-nav::-webkit-scrollbar { width: 3px; }
+.iq-sidebar-nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+.iq-nav-dashboard {
+  margin: 4px 10px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #0D939D;
+  cursor: pointer;
+  border: none;
+  width: calc(100% - 20px);
+  text-align: left;
+  font-family: inherit;
+}
+.iq-section-btn {
+  width: 100%;
+  padding: 7px 16px 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: inherit;
+}
+.iq-nav-item {
+  width: 100%;
+  padding: 7px 12px 7px 24px;
+  background: none;
+  border: none;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-align: left;
+  font-family: inherit;
+}
+.iq-nav-item.active {
+  background-color: rgba(45,179,160,0.15);
+  border-left-color: #0D939D;
+}
+.iq-nav-item:not(.active):hover {
+  background-color: rgba(255,255,255,0.06);
+}
+
+@layer base {
+  :root {
+    --color-primary: #1B3A6B;
+    --color-secondary: #F5A623;
+    --color-success: #27AE60;
+    --color-warning: #F39C12;
+    --color-error: #E74C3C;
+    --color-bg: #F5F6FA;
+    --color-surface: #FFFFFF;
+    --color-border: #E0E3EB;
+    --color-text: #1A2033;
+    --color-text-muted: #6B7280;
+    --color-header-bg: #FFFFFF;
+    --color-header-border: #E2E8F0;
+    --color-sidebar-bg: #F8F9FB;
+    --color-sidebar-border: #E2E8F0;
+    --color-card-bg: #FFFFFF;
+    --color-card-alt: #FAFBFC;
+    --color-table-header: #F7FAFC;
+    --color-table-border: #EDF2F7;
+    --color-input-bg: #FFFFFF;
+    --color-input-border: #CBD5E0;
+    --color-modal-bg: #FFFFFF;
+    --color-dropdown-bg: #FFFFFF;
+    --color-text-primary: #1A202C;
+    --color-text-secondary: #2D3748;
+    --color-text-body: #4A5568;
+    --color-text-light: #718096;
+    --color-text-lighter: #A0AEC0;
+  }
+
+  [data-theme="dark"] {
+    --color-primary: #4DA3FF;
+    --color-bg: #0F1117;
+    --color-surface: #1A1D27;
+    --color-border: #2D3348;
+    --color-text: #E2E8F0;
+    --color-text-muted: #8B95A5;
+    --color-header-bg: #1A1D27;
+    --color-header-border: #2D3348;
+    --color-sidebar-bg: #141620;
+    --color-sidebar-border: #2D3348;
+    --color-card-bg: #1A1D27;
+    --color-card-alt: #1E2231;
+    --color-table-header: #1E2231;
+    --color-table-border: #2D3348;
+    --color-input-bg: #1E2231;
+    --color-input-border: #3D4558;
+    --color-modal-bg: #1A1D27;
+    --color-dropdown-bg: #1A1D27;
+    --color-text-primary: #E2E8F0;
+    --color-text-secondary: #CBD5E0;
+    --color-text-body: #A0AEC0;
+    --color-text-light: #8B95A5;
+    --color-text-lighter: #6B7688;
+  }
+
+  html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    transition: background-color 0.3s, color 0.3s;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: default;
+  }
+
+  /* Allow text selection and cursor only in input fields */
+  input, textarea, [contenteditable] {
+    user-select: text;
+    -webkit-user-select: text;
+    cursor: text;
+  }
+
+  select {
+    user-select: none;
+    cursor: pointer;
+  }
+}
